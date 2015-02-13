@@ -2,11 +2,16 @@ package com.playground.renan.playground.application;
 
 import android.app.Application;
 
+import com.codeslap.persistence.DatabaseSpec;
+import com.codeslap.persistence.PersistenceConfig;
 import com.playground.renan.playground.entity.Cart;
 import com.playground.renan.playground.entity.ItemCart;
+import com.playground.renan.playground.entity.Person;
+import com.playground.renan.playground.db.Database;
+import com.playground.renan.playground.singleton.SingletonAdapter;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by renan on 2/10/15.
@@ -20,7 +25,32 @@ public class App extends Application {
         super.onCreate();
 
         init();
+        initDB();
+        findTest();
+    }
 
+    private void findTest() {
+        List<Person> people = SingletonAdapter.getInstance().getAdapter().findAll(Person.class);
+
+        for (Person person : people){
+            System.out.println(person.getEmail());
+        }
+    }
+
+    private void saveTest() {
+        Person person = new Person();
+        person.setName("Renan");
+        person.setEmail("rsantos.dev@gmail.com");
+        person.save();
+    }
+
+    private void initDB() {
+        Database db = new Database(getApplicationContext());
+        db.getWritableDatabase();
+
+        DatabaseSpec database = PersistenceConfig.registerSpec(Database.DATABASE_SPEC, Database.DATABASE_VERSION);
+        database.match(Person.class);
+        SingletonAdapter.getInstance(getApplicationContext());
     }
 
     private void init() {
