@@ -18,6 +18,11 @@ public class SingletonAdapter {
         adapter = Persistence.getAdapter(context, Database.DATABASE_NAME, Database.DATABASE_SPEC);
     }
 
+    /**
+     *
+     * @param context
+     * @return
+     */
     public static SingletonAdapter getInstance(Context context){
 
         if (singletonAdapter == null){

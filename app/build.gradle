@@ -19,9 +19,15 @@ android {
     }
 }
 
+repositories {
+    jcenter()
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile 'com.codeslap:persistence:0.9.24'
+
+    // database embedded
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }

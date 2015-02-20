@@ -26,23 +26,9 @@ public class App extends Application {
 
         init();
         initDB();
-        findTest();
+
     }
 
-    private void findTest() {
-        List<Person> people = SingletonAdapter.getInstance().getAdapter().findAll(Person.class);
-
-        for (Person person : people){
-            System.out.println(person.getEmail());
-        }
-    }
-
-    private void saveTest() {
-        Person person = new Person();
-        person.setName("Renan");
-        person.setEmail("rsantos.dev@gmail.com");
-        person.save();
-    }
 
     private void initDB() {
         Database db = new Database(getApplicationContext());
