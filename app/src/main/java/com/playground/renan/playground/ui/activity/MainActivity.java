@@ -1,8 +1,5 @@
 package com.playground.renan.playground.ui.activity;
 
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +7,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.playground.renan.playground.R;
-import com.playground.renan.playground.adapter.ItemProductsAdapter;
+import com.playground.renan.playground.adapter.ProductsAdapter;
 import com.playground.renan.playground.application.App;
 import com.playground.renan.playground.callback.CallBackItemClick;
 import com.playground.renan.playground.entity.ItemCart;
-import com.playground.renan.playground.reciver.NewUserReceiver;
 import com.playground.renan.playground.utils.CurrencyUtils;
 import com.playground.renan.playground.utils.NotificationUtil;
 
@@ -36,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         ui = new UIHelper();
         app = (App) getApplication();
         CallBackItemClick on = event();
-        ui.lstItems.setAdapter(new ItemProductsAdapter(this, R.layout.item_product, ItemCart.getFakeList(), on));
+        ui.lstItems.setAdapter(new ProductsAdapter(this, R.layout.item_product, ItemCart.getFakeList(), on));
         updateTotalValue();
         ui.txtTotal.setOnClickListener(eventTotalClick());
     }

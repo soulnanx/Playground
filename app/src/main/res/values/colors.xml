@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#B21200</color>
+    <color name="primary_dark">#FEFEFE</color>
+    <color name="accent">#0010B2</color>
+    <drawable name="list_selector">#FEFEFE</drawable>
+
+</resources>

@@ -27,6 +27,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile 'com.codeslap:persistence:0.9.24'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
 
     // database embedded
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'

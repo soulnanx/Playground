@@ -8,10 +8,16 @@ import com.playground.renan.playground.entity.Cart;
 import com.playground.renan.playground.entity.ItemCart;
 import com.playground.renan.playground.entity.Person;
 import com.playground.renan.playground.db.Database;
+import com.playground.renan.playground.rest.GitHubService;
+import com.playground.renan.playground.rest.Repo;
 import com.playground.renan.playground.singleton.SingletonAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.ErrorHandler;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
 
 /**
  * Created by renan on 2/10/15.
