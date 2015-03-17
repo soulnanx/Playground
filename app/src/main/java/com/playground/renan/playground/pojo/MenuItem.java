@@ -1,6 +1,8 @@
 package com.playground.renan.playground.pojo;
 
-import com.playground.renan.playground.ui.fragment.CartFragment;
+import com.playground.renan.playground.R;
+import com.playground.renan.playground.ui.fragment.CallbackFragment;
+import com.playground.renan.playground.ui.fragment.NotificationFragment;
 
 import java.util.ArrayList;
 
@@ -11,20 +13,22 @@ public class MenuItem {
     private int label;
     private int icon;
 
-    public MenuItem() {
+    private MenuItem(Class fragment) {
+        this.fragmentName =  fragment.getName();
+        try {
+            this.label = fragment.getDeclaredField("NAME_ITEM").getInt(Integer.class);
+            this.icon = fragment.getDeclaredField("ICON_ITEM").getInt(Integer.class);
+        } catch (Exception e) {
+            this.label = R.string.default_item_menu;
+            this.icon = android.R.drawable.ic_media_play;
+        }
     }
 
-    private MenuItem(String fragmentName, int label, int icon) {
-        this.fragmentName = fragmentName;
-        this.label = label;
-        this.icon = icon;
-    }
-
-    public ArrayList<MenuItem> getItemsMenu(){
+    public static ArrayList<MenuItem> getItemsMenu(){
         ArrayList<MenuItem> list = new ArrayList<MenuItem>();
-        list.add(new MenuItem(CartFragment.class.getName(), CartFragment.NAME_ITEM, CartFragment.ICON_ITEM));
-        list.add(new MenuItem(CartFragment.class.getName(), CartFragment.NAME_ITEM, CartFragment.ICON_ITEM));
-        list.add(new MenuItem(CartFragment.class.getName(), CartFragment.NAME_ITEM, CartFragment.ICON_ITEM));
+        list.add(new MenuItem(CallbackFragment.class));
+        list.add(new MenuItem(NotificationFragment.class));
+        list.add(new MenuItem(CallbackFragment.class));
 
         return list;
     }

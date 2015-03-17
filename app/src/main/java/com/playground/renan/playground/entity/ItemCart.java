@@ -32,14 +32,13 @@ public class ItemCart {
 
 
 
-    public static List<ItemCart> getFakeList(){
+    public static List<ItemCart> getAll(){
         List<ItemCart> itemCarts = new ArrayList<>();
 
-        itemCarts.add(new ItemCart(new Product("Coffee", new BigDecimal(2.50), "High quality coffee"), 0));
-        itemCarts.add(new ItemCart(new Product("Sugar", new BigDecimal(3.20), "the most shipper sugar"), 0));
-        itemCarts.add(new ItemCart(new Product("Milk", new BigDecimal(1.50), "the fresh milk"),0));
-        itemCarts.add(new ItemCart(new Product("Chocolate", new BigDecimal(0.50), "chocolate without sugar"),0));
+        for (Product p : Product.getAll()){
+            itemCarts.add(new ItemCart(p, 0));
 
+        }
         return itemCarts;
     }
 

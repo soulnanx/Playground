@@ -9,9 +9,11 @@ import android.os.Bundle;
  */
 public class NotificationUtil {
 
+    public static final String DEFAULT_ACTION = "default";
+
     public static void sendNotification(String action, Context context){
         Intent intent = new Intent();
-        intent.setAction("newUser");
+        intent.setAction(action);
         context.sendBroadcast(intent);
     }
 }

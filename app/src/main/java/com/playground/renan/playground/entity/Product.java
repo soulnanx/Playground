@@ -1,6 +1,9 @@
 package com.playground.renan.playground.entity;
 
+import com.playground.renan.playground.singleton.SingletonAdapter;
+
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +11,30 @@ import java.util.List;
  * Created by renan on 2/9/15.
  */
 public class Product {
+    private long id;
     private String name;
-    private BigDecimal value;
     private String description;
+    private double value;
 
-    public Product(String name, BigDecimal value, String description) {
-        this.name = name;
-        this.value = value;
-        this.description = description;
+    public static List<Product> getAll() {
+        return SingletonAdapter.getInstance().getAdapter().findAll(Product.class);
+
+    }
+
+    public BigDecimal getValue() {
+        return new BigDecimal(value , MathContext.DECIMAL64);
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value.doubleValue();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,14 +45,6 @@ public class Product {
         this.name = name;
     }
 
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -42,3 +53,6 @@ public class Product {
         this.description = description;
     }
 }
+
+
+

@@ -18,7 +18,7 @@ import android.widget.ListView;
 import com.playground.renan.playground.R;
 import com.playground.renan.playground.adapter.MenuAdapter;
 import com.playground.renan.playground.pojo.MenuItem;
-import com.playground.renan.playground.ui.fragment.CartFragment;
+import com.playground.renan.playground.ui.fragment.CallbackFragment;
 
 public class DrawerLayoutMain extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
@@ -38,7 +38,7 @@ public class DrawerLayoutMain extends ActionBarActivity {
         mListView = (ListView) findViewById(R.id.list_menu);
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        mListView.setAdapter(new MenuAdapter(this, R.layout.item_menu_drawer, new MenuItem().getItemsMenu()));
+        mListView.setAdapter(new MenuAdapter(this, R.layout.item_menu_drawer, MenuItem.getItemsMenu()));
         mListView.setOnItemClickListener(new DrawerItemClickListener());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -63,7 +63,7 @@ public class DrawerLayoutMain extends ActionBarActivity {
 
         if (savedInstanceState == null) {
             mListView.setItemChecked(0, true);
-            selectItem(CartFragment.class.getName());
+            selectItem(CallbackFragment.class.getName());
         }
     }
 

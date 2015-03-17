@@ -2,8 +2,9 @@
 <resources>
 
     <string name="app_name">Playground</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="cart_item">Cart</string>
+    <string name="callback_item">Callback</string>
+    <string name="notification_item">Notification</string>
+
+    <string name="default_item_menu">Default</string>
 
 </resources>

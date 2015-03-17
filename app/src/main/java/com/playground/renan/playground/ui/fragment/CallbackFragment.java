@@ -1,8 +1,10 @@
-package com.playground.renan.playground.ui.activity;
+package com.playground.renan.playground.ui.fragment;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,38 +14,33 @@ import com.playground.renan.playground.application.App;
 import com.playground.renan.playground.callback.CallBackItemClick;
 import com.playground.renan.playground.entity.ItemCart;
 import com.playground.renan.playground.utils.CurrencyUtils;
-import com.playground.renan.playground.utils.NotificationUtil;
 
+/**
+ * Created by renan on 2/26/15.
+ */
+public class CallbackFragment extends Fragment {
 
-public class MainActivity extends ActionBarActivity {
+    public static final int NAME_ITEM = R.string.callback_item;
+    public static final int ICON_ITEM = android.R.drawable.ic_menu_myplaces;
 
+    private View view;
     private UIHelper ui;
     private App app;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        view = inflater.inflate(R.layout.fragment_callback, container, false);
         init();
+        return view;
     }
 
     private void init() {
         ui = new UIHelper();
-        app = (App) getApplication();
+        app = (App) getActivity().getApplication();
         CallBackItemClick on = event();
-        ui.lstItems.setAdapter(new ProductsAdapter(this, R.layout.item_product, ItemCart.getAll(), on));
+        ui.lstItems.setAdapter(new ProductsAdapter(getActivity(), R.layout.item_product, ItemCart.getAll(), on));
         updateTotalValue();
-        ui.txtTotal.setOnClickListener(eventTotalClick());
-    }
-
-    private View.OnClickListener eventTotalClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NotificationUtil.sendNotification("newUser", MainActivity.this);
-            }
-        };
     }
 
     private CallBackItemClick event() {
@@ -65,11 +62,10 @@ public class MainActivity extends ActionBarActivity {
         ListView lstItems;
 
         public UIHelper(){
-            txtTotal = (TextView) findViewById(R.id.txt_total);
-            lstItems = (ListView) findViewById(R.id.lst_items);
+            txtTotal = (TextView) view.findViewById(R.id.txt_total);
+            lstItems = (ListView) view.findViewById(R.id.lst_items);
         }
 
     }
-
 
 }

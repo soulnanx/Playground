@@ -15,7 +15,7 @@
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"/>
+            android:layout_below="@id/toolbar" />
     </RelativeLayout>
 
     <LinearLayout
@@ -25,6 +25,27 @@
         android:layout_gravity="start"
         android:background="@android:color/white"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/primary">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_compass"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playground"
+                android:textSize="45sp"
+                android:textColor="@color/primary_dark"/>
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/list_menu"

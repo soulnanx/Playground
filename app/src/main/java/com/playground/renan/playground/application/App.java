@@ -8,6 +8,7 @@ import com.playground.renan.playground.entity.Cart;
 import com.playground.renan.playground.entity.ItemCart;
 import com.playground.renan.playground.entity.Person;
 import com.playground.renan.playground.db.Database;
+import com.playground.renan.playground.entity.Product;
 import com.playground.renan.playground.rest.GitHubService;
 import com.playground.renan.playground.rest.Repo;
 import com.playground.renan.playground.singleton.SingletonAdapter;
@@ -41,7 +42,7 @@ public class App extends Application {
         db.getWritableDatabase();
 
         DatabaseSpec database = PersistenceConfig.registerSpec(Database.DATABASE_SPEC, Database.DATABASE_VERSION);
-        database.match(Person.class);
+        database.match(Person.class, Product.class);
         SingletonAdapter.getInstance(getApplicationContext());
     }
 
